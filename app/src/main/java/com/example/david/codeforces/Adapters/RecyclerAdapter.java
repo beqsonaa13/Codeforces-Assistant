@@ -1,9 +1,10 @@
-package com.example.david.codeforces;
+package com.example.david.codeforces.Adapters;
 
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,8 +12,11 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.david.codeforces.Activities.DetailedActivity;
+import com.example.david.codeforces.Activities.MainActivity;
 import com.example.david.codeforces.Model.MainModel;
 import com.example.david.codeforces.Model.ProblemModel;
+import com.example.david.codeforces.R;
 
 import java.util.ArrayList;
 import butterknife.BindView;
@@ -21,14 +25,14 @@ import io.realm.Realm;
 import io.realm.RealmResults;
 
 
-class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
+public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
     private ArrayList<MainModel> problemsetList = new ArrayList<>();
     private OnItemClickListener mItemClickListener;
     private Context context;
     private RealmResults<ProblemModel> result;
     private Realm realm;
 
-    RecyclerAdapter(ArrayList<MainModel> problemsetList, Context context, RealmResults<ProblemModel> result) {
+    public RecyclerAdapter(ArrayList<MainModel> problemsetList, Context context, RealmResults<ProblemModel> result) {
         this.problemsetList = problemsetList;
         this.context = context;
         this.result = result;
@@ -52,8 +56,10 @@ class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
         holder.tags.setText(tagsString.replace("[","").replace("]",""));
         ProblemModel results = realm.where(ProblemModel.class).equalTo("problemId",problemsetList.get(position).getId() + problemsetList.get(position).getType()).findFirst();
         if (results != null){
+            Log.v("Output", "done");
             holder.button.setBackgroundResource(R.drawable.ic_cloud_done_black_24dp);
         }else{
+            Log.v("Output", "not done");
             holder.button.setBackgroundResource(R.drawable.ic_cloud_download_black_24dp);
         }
 
@@ -107,10 +113,10 @@ class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
             }
         }
     }
-    interface OnItemClickListener {
+    public interface OnItemClickListener {
         void onItemClick(View view, int position);
     }
-    void setOnItemClickListener(final OnItemClickListener mItemClickListener) {
+    public void setOnItemClickListener(final OnItemClickListener mItemClickListener) {
         this.mItemClickListener =  mItemClickListener;
     }
 

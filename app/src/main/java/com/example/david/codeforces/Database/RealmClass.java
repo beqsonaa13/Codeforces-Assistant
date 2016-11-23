@@ -1,4 +1,4 @@
-package com.example.david.codeforces;
+package com.example.david.codeforces.Database;
 
 import android.app.Application;
 

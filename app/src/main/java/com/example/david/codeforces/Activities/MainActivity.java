@@ -1,6 +1,5 @@
-package com.example.david.codeforces;
+package com.example.david.codeforces.Activities;
 
-import android.app.ProgressDialog;
 import android.net.ConnectivityManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -22,6 +21,8 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.david.codeforces.Model.MainModel;
 import com.example.david.codeforces.Model.ProblemModel;
+import com.example.david.codeforces.R;
+import com.example.david.codeforces.Adapters.RecyclerAdapter;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -39,7 +40,6 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
     @BindView(R.id.activity_main)
     SwipeRefreshLayout swipetorefresh;
     RecyclerAdapter adapter;
-    ProgressDialog progressDialog;
     int tempid = 1;
     ArrayList<MainModel> problemsetList = new ArrayList<>();
     private Realm realm;
@@ -127,12 +127,10 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
     public void downloadProblem(final String id, final String type, final int position, final String name, final int count, final String tags){
         RequestQueue queue = Volley.newRequestQueue(this);
         final String url ="http://codeforces.com/problemset/problem/" + id +  "/" + type;
-        Log.d("Output", url);
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        new AsyncExecution().execute(response);
                         saveInDb(response, id + type, position, name, count, tags);
                     }
 
@@ -195,8 +193,6 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         @Override
         protected void onPostExecute(Void result) {
             adapter.notifyDataSetChanged();
-//            progressDialog.dismiss();
-//            progressDialog.cancel();
             swipetorefresh.setRefreshing(false);
         }
     }
@@ -215,7 +211,6 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
                     swipetorefresh.setRefreshing(false);
                 }
             }
-
         }
     }
 
@@ -225,7 +220,6 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
     }
 
     private void saveInDb(final String response, final String id, final int position, final String name, final int count, final String tags){
-        Log.d("Output", response);
         realm.executeTransactionAsync(new Realm.Transaction() {
             @Override
             public void execute(Realm bgRealm) {
@@ -239,6 +233,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         }, new Realm.Transaction.OnSuccess() {
             @Override
             public void onSuccess() {
+                adapter.notifyDataSetChanged();
                 Log.d("Output", "=========== Success =============");
                 makeToast("Downloaded Successfully");
             }
@@ -261,10 +256,6 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
     }
 
     private void startDialog(){
-//        progressDialog = ProgressDialog.show(this,
-//                "Loading!","Please wait");
-//        progressDialog.setCanceledOnTouchOutside(true);
-//        progressDialog.show();
         swipetorefresh.setRefreshing(true);
     }
 

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
-    tools:context="com.example.david.codeforces.MainActivity">
+    tools:context="com.example.david.codeforces.Activities.MainActivity">
 
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/activity_main"
@@ -24,7 +24,6 @@
                 />
             <Button
                 android:id="@+id/button"
-                android:text="hii"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:visibility="gone"

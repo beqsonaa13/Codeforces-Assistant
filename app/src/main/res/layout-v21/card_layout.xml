@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -64,7 +62,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="ID"
+                android:text="@string/id"
                 android:textStyle="bold"
                 android:textColor="#F57C00"
                 android:textAlignment="center"
@@ -81,7 +79,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="LEVEL"
+                android:text="@string/level"
                 android:textStyle="bold"
                 android:textColor="#F57C00"
                 android:textAlignment="center"
@@ -98,7 +96,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="SOLVED"
+                android:text="@string/solved"
                 android:textColor="#F57C00"
                 android:textStyle="bold"
                 android:textAlignment="center"
@@ -168,7 +166,7 @@
                 android:layout_height="match_parent"
                 android:padding="10dp"
                 android:textStyle="bold"
-                android:text="Tags:"
+                android:text="@string/tags"
                 android:textColor="#F57C00"
 
                 />
@@ -178,7 +176,7 @@
                 android:layout_height="wrap_content"
                 android:padding="10dp"
                 android:textStyle="italic"
-                android:layout_toRightOf="@+id/tag"
+                android:layout_toEndOf="@+id/tag"
 
                 />
         </RelativeLayout>

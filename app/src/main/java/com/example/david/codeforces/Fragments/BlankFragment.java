@@ -1,4 +1,4 @@
-package com.example.david.codeforces;
+package com.example.david.codeforces.Fragments;
 
 
 import android.app.ProgressDialog;
@@ -20,6 +20,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.david.codeforces.R;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;

@@ -1,4 +1,4 @@
-package com.example.david.codeforces;
+package com.example.david.codeforces.Adapters;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -7,16 +7,17 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.david.codeforces.Model.InputModel;
+import com.example.david.codeforces.R;
 
 import java.util.ArrayList;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 
-class InputRecyclerAdapter extends RecyclerView.Adapter<InputRecyclerAdapter.ViewHolder> {
+public class InputRecyclerAdapter extends RecyclerView.Adapter<InputRecyclerAdapter.ViewHolder> {
     private ArrayList<InputModel> problemsetList = new ArrayList<>();
 
-    InputRecyclerAdapter(ArrayList<InputModel> problemsetList) {
+    public InputRecyclerAdapter(ArrayList<InputModel> problemsetList) {
         this.problemsetList = problemsetList;
     }
 

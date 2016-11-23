@@ -1,4 +1,4 @@
-package com.example.david.codeforces;
+package com.example.david.codeforces.Activities;
 
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -13,7 +13,10 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.david.codeforces.Fragments.BlankFragment;
+import com.example.david.codeforces.Fragments.InputFragment;
 import com.example.david.codeforces.Model.ProblemModel;
+import com.example.david.codeforces.R;
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItemAdapter;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItems;

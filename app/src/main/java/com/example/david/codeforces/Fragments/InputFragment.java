@@ -1,4 +1,4 @@
-package com.example.david.codeforces;
+package com.example.david.codeforces.Fragments;
 
 
 import android.content.Context;
@@ -13,34 +13,28 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
+import com.example.david.codeforces.Adapters.InputRecyclerAdapter;
 import com.example.david.codeforces.Model.InputModel;
-
+import com.example.david.codeforces.R;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
-
 import java.util.ArrayList;
 import java.util.Arrays;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
-
-/**
- * A simple {@link Fragment} subclass.
- */
 public class InputFragment extends Fragment {
     @BindView(R.id.inputRecycler)
     RecyclerView recyclerView;
     InputRecyclerAdapter adapter;
     private Unbinder unbinder;
     ArrayList<InputModel> inputList = new ArrayList<>();
-    public InputFragment() {
-        // Required empty public constructor
-    }
 
+    public InputFragment() {
+
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -56,9 +50,6 @@ public class InputFragment extends Fragment {
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
         SharedPreferences pref = getContext().getSharedPreferences("MyData", Context.MODE_PRIVATE);
         String response = pref.getString("response", "");
-
-//        String output = pref.getString("output", "").replace(",","\n").replace("[","").replace("]","");
-////        Log.d("Output", input + " // " + output);
         Document doc = Jsoup.parse(response);
         Elements tables = doc.getElementsByClass("ttypography");
         Elements inputs = tables.first().getElementsByClass("input");
@@ -67,22 +58,13 @@ public class InputFragment extends Fragment {
             InputModel inputModel = new InputModel();
             String input [] = inputs.get(i).getElementsByTag("pre").toString().split("<br />");
             String output [] = outputs.get(i).getElementsByTag("pre").toString().split("<br />");
-            Log.d("Output",Arrays.toString(input));
             inputModel.setInput(" " + Arrays.toString(input).replace(",","\n").replace("[","").replace("]","").replace("<pre>","").replace("</pre>",""));
             inputModel.setOutput(" " + Arrays.toString(output).replace(",","\n").replace("[","").replace("]","").replace("<pre>","").replace("</pre>",""));
             inputList.add(inputModel);
-            Log.d("Output", inputList.get(i).getInput());
-
         }
         adapter = new InputRecyclerAdapter(inputList);
         recyclerView.setLayoutManager(mLayoutManager);
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(adapter);
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
     }
 
     @Override

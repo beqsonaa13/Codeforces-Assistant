@@ -6,7 +6,7 @@
     android:orientation="vertical"
     android:fillViewport="true"
     android:background="#FFF"
-    tools:context="com.example.david.codeforces.DetailedActivity">
+    tools:context="com.example.david.codeforces.Activities.DetailedActivity">
 <LinearLayout
     android:id="@+id/activity_detailed"
     android:layout_width="match_parent"
@@ -44,7 +44,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="Time Limit"
+                android:text="@string/time_limit"
                 android:textStyle="bold"
                 android:textColor="#ECEFF1"
                 android:textAlignment="center"
@@ -55,7 +55,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="Memory Limit"
+                android:text="@string/memory_limit"
                 android:textStyle="bold"
                 android:textColor="#ECEFF1"
                 android:textAlignment="center"
