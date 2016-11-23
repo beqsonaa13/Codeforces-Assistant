@@ -1,0 +1,41 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.developer.myapplication.MainActivity">
+    <item
+        android:id="@+id/sort"
+        android:title="SOLVED"
+        app:showAsAction="ifRoom"
+        android:actionViewClass="android.widget.Button"
+        />
+    <item
+        android:title="SORT"
+        app:showAsAction="ifRoom">
+        <menu>
+            <item
+
+                android:title="Math" />
+            <item
+
+                android:title="DP" />
+            <item
+
+                android:title="Math" />
+            <item
+
+                android:title="DP" />
+            <item
+
+                android:title="Math" />
+            <item
+
+                android:title="DP" />
+            <item
+
+                android:title="Math" />
+            <item
+
+                android:title="DP" />
+        </menu>
+    </item>
+</menu>
